@@ -1,0 +1,95 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/images"
+public_folder: "/assets/images"
+
+locale: de
+
+collections:
+
+  # ── PRODUKTE ───────────────────────────────────────────────────
+  - name: "products"
+    label: "Produkte"
+    label_singular: "Produkt"
+    folder: "src/content/products"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name (Deutsch)",  name: "title",    widget: "string" }
+      - { label: "Name (Türkisch)", name: "title_tr", widget: "string", required: false }
+      - label: "Kategorie"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Goldankauf",   value: "goldankauf" }
+          - { label: "Trauringe",    value: "trauringe" }
+          - { label: "Goldkette",    value: "goldkette" }
+          - { label: "Goldarmband",  value: "goldarmband" }
+      - { label: "Reihenfolge",     name: "order",      widget: "number", default: 99 }
+      - { label: "Hauptbild",       name: "image",      widget: "image" }
+      - label: "Weitere Bilder (Galerie)"
+        name: "images"
+        widget: "list"
+        required: false
+        field: { label: "Bild", name: "img", widget: "image" }
+      - { label: "Bestseller",      name: "is_bestseller", widget: "boolean", default: false }
+      - { label: "Neu",             name: "is_new",        widget: "boolean", default: false }
+      - { label: "Bewertung (1–5)", name: "rating",        widget: "number",  value_type: "float" }
+      - { label: "Anzahl Bewertungen", name: "review_count", widget: "number" }
+      - { label: "Kundenstimme (DE)", name: "review",      widget: "text", required: false }
+      - { label: "Kundenstimme (TR)", name: "review_tr",   widget: "text", required: false }
+      - { label: "Kunde (Name, Ort)", name: "review_author", widget: "string", required: false }
+      - label: "Technische Daten"
+        name: "specs"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Bezeichnung", name: "key",   widget: "string" }
+          - { label: "Wert",        name: "value", widget: "string" }
+      - { label: "Beschreibung (DE)", name: "body",    widget: "markdown" }
+      - { label: "Beschreibung (TR)", name: "desc_tr", widget: "text", required: false }
+
+  # ── EINSTELLUNGEN ──────────────────────────────────────────────
+  - name: "settings"
+    label: "Einstellungen"
+    files:
+
+      - name: "site"
+        label: "Kontakt & Öffnungszeiten"
+        file: "src/_data/site.yaml"
+        fields:
+          - label: "Kontaktdaten"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Telefon",    name: "phone",     widget: "string" }
+              - { label: "E-Mail",     name: "email",     widget: "string" }
+              - { label: "Adresse",    name: "address",   widget: "string" }
+              - { label: "Facebook",   name: "facebook",  widget: "string" }
+              - { label: "Instagram",  name: "instagram", widget: "string" }
+          - label: "Öffnungszeiten"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Wochentage (Mo–Fr)", name: "weekdays", widget: "string" }
+              - { label: "Samstag",            name: "saturday", widget: "string" }
+              - { label: "Sonntag",            name: "sunday",   widget: "string" }
+          - label: "Hero-Bereich"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow-Text",  name: "eyebrow", widget: "string" }
+              - { label: "Hauptüberschrift (HTML erlaubt)", name: "heading", widget: "string" }
+              - { label: "Untertext",     name: "subtext",  widget: "text" }
+          - label: "Über uns"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Überschrift (HTML erlaubt)", name: "heading",    widget: "string" }
+              - { label: "Absatz 1",                   name: "paragraph1", widget: "text" }
+              - { label: "Absatz 2",                   name: "paragraph2", widget: "text" }
+              - { label: "Name des Inhabers",          name: "owner_name", widget: "string" }
+              - { label: "Rolle / Untertitel",         name: "owner_role", widget: "string" }
