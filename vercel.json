@@ -1,5 +1,4 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "_site",
-  "installCommand": "npm install"
+  "buildCommand": "",
+  "cleanUrls": true
 }
