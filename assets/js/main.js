@@ -1,3 +1,11 @@
+const LS_THEME = 'ja-theme';
+
+function initTheme() {
+  const saved = localStorage.getItem(LS_THEME) || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  if (el.themeIco) el.themeIco.textContent = saved === 'dark' ? '☾' : '✦';
+}
+
 /* ═══════════════════════════════════════════════════════════════════
    PART 2 – Modal · Theme · Nav · Hero · Misc · init()
    ═══════════════════════════════════════════════════════════════════ */
