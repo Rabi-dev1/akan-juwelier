@@ -3,7 +3,11 @@ const LS_THEME = 'ja-theme';
 function initTheme() {
   const saved = localStorage.getItem(LS_THEME) || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
-  if (el.themeIco) el.themeIco.textContent = saved === 'dark' ? '☾' : '✦';
+
+  const themeIco = document.getElementById('theme-ico');
+  if (themeIco) {
+    themeIco.textContent = saved === 'dark' ? '☾' : '✦';
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════
