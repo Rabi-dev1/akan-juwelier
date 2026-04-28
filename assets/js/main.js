@@ -621,3 +621,5 @@ if (document.readyState === 'loading') {
 } else {
   init(); // DOM bereits bereit (z. B. Script am Ende des Body)
 }
+
+document.addEventListener("DOMContentLoaded", init);
