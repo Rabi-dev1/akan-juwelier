@@ -1,14 +1,20 @@
 const LS_THEME = 'ja-theme';
 
-function initTheme() {
-  const saved = localStorage.getItem(LS_THEME) || 'dark';
-  document.documentElement.setAttribute('data-theme', saved);
+let el = {};
 
-  const themeIco = document.getElementById('theme-ico');
-  if (themeIco) {
-    themeIco.textContent = saved === 'dark' ? '☾' : '✦';
-  }
+function initElements() {
+  el = {
+    themeIco: document.getElementById('theme-ico'),
+    modal: document.querySelector('.modal'),
+    modalBackdrop: document.querySelector('.mb'),
+    nav: document.getElementById('nav'),
+    heroBg: document.querySelector('.h-bg'),
+    toast: document.getElementById('toast'),
+    contactForm: document.querySelector('form'),
+  };
 }
+
+
 
 /* ═══════════════════════════════════════════════════════════════════
    PART 2 – Modal · Theme · Nav · Hero · Misc · init()
