@@ -88,6 +88,8 @@ function formatPrice(price) {
 /* ─────────────────────────────────────────────────────────────────
    §6  PRODUKTE RENDERN
 ───────────────────────────────────────────────────────────────── */
+const toLower = s => s ? s.toLocaleLowerCase('tr') : '';
+
 function renderProducts() {
   const container = document.getElementById('pg');
   if (!container) return;
@@ -96,11 +98,11 @@ function renderProducts() {
 
   let filtered = products.filter(p => {
     const matchCat    = state.filter === 'alle' || p.cat === state.filter;
-    const q           = state.searchQuery.toLowerCase();
+    const q           = toLower(state.searchQuery);
     const matchSearch = !q ||
-      p.name.toLowerCase().includes(q) ||
-      (p.name_tr && p.name_tr.toLowerCase().includes(q)) ||
-      (p.desc  && p.desc.toLowerCase().includes(q));
+      toLower(p.name).includes(q) ||
+      (p.name_tr && toLower(p.name_tr).includes(q)) ||
+      (p.desc    && toLower(p.desc).includes(q));
     return matchCat && matchSearch;
   });
 
