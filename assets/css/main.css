@@ -664,6 +664,42 @@ footer { background:#080808; border-top:1px solid var(--b); padding:84px 0 0; }
 [data-theme="light"] .ft-bot { color:var(--m); }
 .ft-bot span  { color:var(--gs); }
 
+/* Agency credit */
+.agency-credit {
+  text-align:center;
+  padding:18px 0 16px;
+  border-top:1px solid var(--b);
+  font-size:.72rem;
+  color:var(--m);
+  letter-spacing:.03em;
+}
+.agency-credit .by {
+  font-size:.66rem;
+  font-weight:300;
+  opacity:.55;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  margin-right:5px;
+}
+.agency-credit a {
+  color:rgba(255,255,255,.75);
+  font-weight:600;
+  letter-spacing:.07em;
+  text-decoration:none;
+  position:relative;
+}
+[data-theme="light"] .agency-credit a { color:rgba(26,18,8,.75); }
+.agency-credit a::after {
+  content:'';
+  position:absolute;
+  bottom:-2px; left:0;
+  width:0; height:1px;
+  background:var(--g);
+  transition:width .35s var(--ease);
+}
+.agency-credit a:hover { color:var(--g); }
+.agency-credit a:hover::after { width:100%; }
+
 /* ─────────────────────────────────────────────────────────────────
    16. MODAL (Phase 3 Enhanced)
 ───────────────────────────────────────────────────────────────── */
